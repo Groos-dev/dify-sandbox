@@ -23,6 +23,11 @@ func RunSandboxController(c *gin.Context) {
 			c.JSON(200, service.RunNodeJsCode(req.Code, req.Preload, &runner_types.RunnerOptions{
 				EnableNetwork: req.EnableNetwork,
 			}))
+		case "java":
+			c.JSON(200, service.RunJavaCode(req.Code, req.Preload, &runner_types.RunnerOptions{
+				EnableNetwork: req.EnableNetwork,
+			}))
+
 		default:
 			c.JSON(400, types.ErrorResponse(-400, "unsupported language"))
 		}
